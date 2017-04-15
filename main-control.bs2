@@ -1,0 +1,107 @@
+' {$STAMP BS2}
+' {$PBASIC 2.5}
+
+Main:
+
+    'Calling a subroutine
+    'GOSUB Forward_Pulse   
+
+    'TODO:
+    ' define loop
+    ' cycle between fetch, execute until HALT command fetched
+
+    DO UNTIL (IN11 = 1) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 1)
+
+        '-------Fetch 
+            'read pins
+        '-------Execute
+            '-------Commands
+                '0001 - Forward 
+                '0010 - Backup
+                '0011 - Full Turn, Right
+                '0100 - Full Turn, Left
+                '0101 - Half Turn, Right
+                '0110 - Half Turn, Left
+                '0111 - Quarter Turn, Right
+                '1000 - Quarter Turn, Left
+                '1001 - Eigth Turn, Right
+                '1010 - Eigth Turn, Left
+                '1011 -
+                '1100 -
+                '1101 -
+                '1110 - Pause
+                '1111 - HALT
+            'send ready signal PIN OFF, PIN ON
+
+    LOOP
+
+END
+
+
+'[Subroutines]'
+
+    'Specific dance moves
+
+	Forward_Pulse:
+		FOR pulseCount = 0 TO 15
+		  PULSOUT 13, 850
+		  PULSOUT 12, 650
+		  PAUSE 20
+		NEXT
+	RETURN
+
+	Turn_Left:
+		FOR pulseCount = 0 TO 15
+			PULSOUT 13, 650
+			PULSOUT 12, 650
+			PAUSE 20
+		NEXT
+	RETURN
+
+	Turn_Right:
+		FOR pulseCount = 0 TO 15
+			PULSOUT 13, 850
+			PULSOUT 12, 850
+			PAUSE 20
+		NEXT
+	RETURN
+
+	Back_Up:
+		FOR PulseCount = 0 TO 30
+			PULSOUT 13, 650
+			PULSOUT 12, 850
+			PAUSE 20
+	 	NEXT
+	RETURN
+
+	Full_Spin_Right:
+		FOR PulseCount = 0 TO 70
+			PULSOUT 13, 850
+			PULSOUT 12, 850
+			PAUSE 20
+		NEXT
+	RETURN
+
+	Full_Spin_Left:
+		FOR PulseCount = 0 TO 70
+			PULSOUT 13, 650
+			PULSOUT 12, 650
+			PAUSE 20
+		NEXT
+	RETURN
+
+	Quick_Turn_Left:
+		FOR pulseCount = 0 TO 5
+			PULSOUT 13, 650
+			PULSOUT 12, 650
+			PAUSE 20
+		NEXT
+	RETURN
+
+	Quick_Turn_Right:
+		FOR pulseCount = 0 TO 15
+			PULSOUT 13, 850
+			PULSOUT 12, 850
+			PAUSE 20
+		NEXT
+RETURN

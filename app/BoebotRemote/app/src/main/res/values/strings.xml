@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">BoebotRemote</string>
+    <string name="commands">Commands</string>
+    <string name="start">Start</string>
+    <string name="end">End</string>
+    <string name="delay">Delay</string>
+    <string name="connect">Connect</string>
+
+</resources>

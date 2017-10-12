@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/BobotRemote.iml" filepath="$PROJECT_DIR$/BobotRemote.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BoebotRemote.iml" filepath="$PROJECT_DIR$/BoebotRemote.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
     </modules>
   </component>

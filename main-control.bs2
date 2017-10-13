@@ -33,6 +33,43 @@ Main:
                 '1111 - HALT
             'send ready signal PIN OFF, PIN ON
 
+		IF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 1) THEN			'0001 - Forward 
+			GOSUB Signal_Not_Ready
+			GOSUB Forward_Pulse
+			GOSUB Signal_Ready
+		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 0) THEN		'0010 - Backup
+			GOSUB Back_Up
+			GOSUB Turn_Right
+		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 1) THEN		'0011 - Full Turn, Right
+			GOSUB Full_Spin_Right
+		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 0) THEN		'0100 - Full Turn, Left
+			GOSUB Full_Spin_Left
+		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 1) THEN		'0101 - Half Turn, Right
+			GOSUB 
+		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 0) THEN		'0110 - Half Turn, Left
+			GOSUB
+		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 1) THEN		'0111 - Quarter Turn, Right
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 0) THEN 	'1000 - Quarter Turn, Left
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 1) THEN 	'1001 - Eigth Turn, Right
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 0) THEN		'1010 - Eigth Turn, Left
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 1) THEN		'1011 -
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 0) THEN		'1100 -
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 1) THEN		'1101 -
+			GOSUB
+		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 0) THEN		'1110 - Pause
+			GOSUB
+		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 0) THEN		'1111 - HALT
+			GOSUB
+		ELSE
+			
+		ENDIF
+
     LOOP
 
 END
@@ -103,5 +140,12 @@ END
 			PULSOUT 13, 850
 			PULSOUT 12, 850
 			PAUSE 20
+		NEXT
+
+	Signal_Ready:	'Indicate ready for new instruction, turning off indicates instruction received, on indicates begin transmitting
+		'set ready pin high
+		NEXT
+	Signal_Not_Ready:	'Indicate ready for new instruction, turning off indicates instruction received, on indicates begin transmitting
+		'set ready pin low
 		NEXT
 RETURN

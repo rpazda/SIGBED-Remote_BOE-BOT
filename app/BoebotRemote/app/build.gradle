@@ -4,6 +4,10 @@ android {
     compileSdkVersion 25
     buildToolsVersion "26.0.0"
     defaultConfig {
+        jackOptions
+                {
+                    enabled true
+                }
         applicationId "app.controller.brdgt.com.bobotremote"
         minSdkVersion 15
         targetSdkVersion 25
@@ -17,6 +21,12 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    compileOptions
+            {
+                sourceCompatibility JavaVersion.VERSION_1_8
+                targetCompatibility JavaVersion.VERSION_1_8
+            }
 }
 
 dependencies {
@@ -28,3 +38,4 @@ dependencies {
     compile 'com.android.support.constraint:constraint-layout:1.0.2'
     testCompile 'junit:junit:4.12'
 }
+

@@ -10,7 +10,7 @@ Main:
     ' define loop
     ' cycle between fetch, execute until HALT command fetched
 
-    DO UNTIL (IN11 = 1) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 1)
+    DO UNTIL (IN6 = 1) AND (IN7 = 1) AND (IN8 = 1) AND (IN9 = 1)
 
         '-------Fetch 
             'read pins
@@ -33,38 +33,38 @@ Main:
                 '1111 - HALT
             'send ready signal PIN OFF, PIN ON
 
-		IF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 1) THEN			'0001 - Forward 
-			GOSUB Signal_Not_Ready
+		IF (IN6 = 0) AND (IN7 = 0) AND (IN8 = 0) AND (IN9 = 1) THEN			'0001 - Forward 
+			'GOSUB Signal_Not_Ready
 			GOSUB Forward_Pulse
-			GOSUB Signal_Ready
-		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 0) THEN		'0010 - Backup
+			'GOSUB Signal_Ready
+		ELSEIF (IN6 = 0) AND (IN7 = 0) AND (IN8 = 1) AND (IN9 = 0) THEN		'0010 - Backup
 			GOSUB Back_Up
-			GOSUB Turn_Right
-		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 1) THEN		'0011 - Full Turn, Right
+			'GOSUB Turn_Right
+		ELSEIF (IN6 = 0) AND (IN7 = 0) AND (IN8 = 1) AND (IN9 = 1) THEN		'0011 - Full Turn, Right
 			GOSUB Full_Spin_Right
-		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 0) THEN		'0100 - Full Turn, Left
+		ELSEIF (IN6 = 0) AND (IN7 = 1) AND (IN8 = 0) AND (IN9 = 0) THEN		'0100 - Full Turn, Left
 			GOSUB Full_Spin_Left
-		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 1) THEN		'0101 - Half Turn, Right
+		ELSEIF (IN6 = 0) AND (IN7 = 1) AND (IN8 = 0) AND (IN9 = 1) THEN		'0101 - Half Turn, Right
 			GOSUB 
-		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 0) THEN		'0110 - Half Turn, Left
+		ELSEIF (IN6 = 0) AND (IN7 = 1) AND (IN8 = 1) AND (IN9 = 0) THEN		'0110 - Half Turn, Left
 			GOSUB
-		ELSEIF (IN11 = 0) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 1) THEN		'0111 - Quarter Turn, Right
+		ELSEIF (IN6 = 0) AND (IN7 = 1) AND (IN8 = 1) AND (IN9 = 1) THEN		'0111 - Quarter Turn, Right
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 0) THEN 	'1000 - Quarter Turn, Left
+		ELSEIF (IN6 = 1) AND (IN7 = 0) AND (IN8 = 0) AND (IN9 = 0) THEN 	'1000 - Quarter Turn, Left
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 1) THEN 	'1001 - Eigth Turn, Right
+		ELSEIF (IN6 = 1) AND (IN7 = 0) AND (IN8 = 0) AND (IN9 = 1) THEN 	'1001 - Eigth Turn, Right
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 0) THEN		'1010 - Eigth Turn, Left
+		ELSEIF (IN6 = 1) AND (IN7 = 0) AND (IN8 = 1) AND (IN9 = 0) THEN		'1010 - Eigth Turn, Left
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 0) AND (IN13 = 1) AND (IN14 = 1) THEN		'1011 -
+		ELSEIF (IN6 = 1) AND (IN7 = 0) AND (IN8 = 1) AND (IN9 = 1) THEN		'1011 -
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 0) THEN		'1100 -
+		ELSEIF (IN6 = 1) AND (IN7 = 1) AND (IN8 = 0) AND (IN9 = 0) THEN		'1100 -
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 0) AND (IN14 = 1) THEN		'1101 -
+		ELSEIF (IN6 = 1) AND (IN7 = 1) AND (IN8 = 0) AND (IN9 = 1) THEN		'1101 -
 			GOSUB
-		ELSEIF (IN11 = 1) AND (IN12 = 1) AND (IN13 = 1) AND (IN14 = 0) THEN		'1110 - Pause
+		ELSEIF (IN6 = 1) AND (IN7 = 1) AND (IN8 = 1) AND (IN9 = 0) THEN		'1110 - Pause
 			GOSUB
-		ELSEIF (IN11 = 0) AND (IN12 = 0) AND (IN13 = 0) AND (IN14 = 0) THEN		'1111 - HALT
+		ELSEIF (IN6 = 0) AND (IN7 = 0) AND (IN8 = 0) AND (IN9 = 0) THEN		'1111 - HALT
 			GOSUB
 		ELSE
 			

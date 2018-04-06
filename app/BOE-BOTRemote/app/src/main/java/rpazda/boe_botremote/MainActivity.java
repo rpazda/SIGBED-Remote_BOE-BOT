@@ -41,6 +41,10 @@ public class MainActivity extends AppCompatActivity {
     private ArrayAdapter<String> mBTArrayAdapter;
     private ListView mDevicesListView;
     private CheckBox mLED1;
+    private Button mMoveForwardButton;
+    private Button mMoveBackButton;
+    private Button mRotateLeftButton;
+    private Button mRotateRightButton;
 
     private Handler mHandler; // Our main handler that will receive callback notifications
     private ConnectedThread mConnectedThread; // bluetooth background worker thread to send and receive data
@@ -67,6 +71,11 @@ public class MainActivity extends AppCompatActivity {
         mDiscoverBtn = (Button)findViewById(R.id.discover);
         mListPairedDevicesBtn = (Button)findViewById(R.id.PairedBtn);
         mLED1 = (CheckBox)findViewById(R.id.checkboxLED1);
+
+        mMoveForwardButton = (Button)findViewById(R.id.moveForwardButton);
+        mMoveBackButton = (Button)findViewById(R.id.moveBackButton);
+        mRotateLeftButton = (Button)findViewById(R.id.rotateLeftButton);
+        mRotateRightButton = (Button)findViewById(R.id.rotateRightButton);
 
         mBTArrayAdapter = new ArrayAdapter<String>(this,android.R.layout.simple_list_item_1);
         mBTAdapter = BluetoothAdapter.getDefaultAdapter(); // get a handle on the bluetooth radio
@@ -114,6 +123,37 @@ public class MainActivity extends AppCompatActivity {
                 }
             });
 
+            mMoveForwardButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(mConnectedThread != null) //First check to make sure thread created
+                        mConnectedThread.write("w");
+                }
+            });
+
+            mMoveBackButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(mConnectedThread != null) //First check to make sure thread created
+                        mConnectedThread.write("s");
+                }
+            });
+
+            mRotateLeftButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(mConnectedThread != null) //First check to make sure thread created
+                        mConnectedThread.write("a");
+                }
+            });
+
+            mRotateRightButton.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v){
+                    if(mConnectedThread != null) //First check to make sure thread created
+                        mConnectedThread.write("d");
+                }
+            });
 
             mScanBtn.setOnClickListener(new View.OnClickListener() {
                 @Override
